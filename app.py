@@ -82,12 +82,12 @@ class PSM_analysis():
         lower_bound = compromise_df['Subgroup'].iloc[lower_bound_idx]
         upper_bound = compromise_df['Subgroup'].iloc[upper_bound_idx]
 
-        house_lower = compromise_df['Percentage_Expen'].loc[lower_bound_idx]
-        house_upper = compromise_df['Percentage_Expen'].loc[upper_bound_idx]
-        land_lower = compromise_df['Percentage_Cheap'].loc[lower_bound_idx]
-        land_upper = compromise_df['Percentage_Cheap'].loc[upper_bound_idx]
+        exp_lower = compromise_df['Percentage_Expen'].loc[lower_bound_idx]
+        exp_upper = compromise_df['Percentage_Expen'].loc[upper_bound_idx]
+        cheap_lower = compromise_df['Percentage_Cheap'].loc[lower_bound_idx]
+        cheap_upper = compromise_df['Percentage_Cheap'].loc[upper_bound_idx]
 
-        exact_intersection_subgroup = lower_bound + (upper_bound - lower_bound) * ((house_lower - land_lower) / ((land_upper - land_lower) - (house_upper - house_lower)))
+        exact_intersection_subgroup = lower_bound + (upper_bound - lower_bound) * ((exp_lower - cheap_lower) / ((cheap_upper - cheap_lower) - (exp_upper - exp_lower)))
 
         return exact_intersection_subgroup
     
